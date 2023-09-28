@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from 'vite'
 import { resolve } from 'path';
 import react from '@vitejs/plugin-react-swc'
@@ -9,11 +10,24 @@ export default defineConfig({
     react(),  
     eslint({ failOnWarning: false, failOnError: false, cache: false }),
   ],
+  server: {
+    port: 3000,
+  },
+  esbuild: {
+    loader: 'jsx',
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      loader: {
+        '.js': 'jsx',
+      },
+    },
+  },
   resolve: {
     alias: { '@': resolve(__dirname, './src') },
   },
-  server: {
-    port: 3000,
-  }
-  
+  // Build
+  build: {
+    assetsDir: 'static',
+  },
 })

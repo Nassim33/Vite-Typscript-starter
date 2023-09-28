@@ -13,4 +13,4 @@ rules:
   alpha-value-notation: null
   no-descending-specificity: null
 ignoreFiles:
-  - ../turret_monitoring/core/static/css/**
+
